@@ -24,6 +24,7 @@ public class MyInterceotor implements HandlerInterceptor{
 			throws Exception {
 		System.out.println("!!!!!!!!!!!");
 		System.out.println("------------------1");
+		System.out.println("不知道");
 	}
 
 	public void postHandle(HttpServletRequest arg0, HttpServletResponse arg1,
