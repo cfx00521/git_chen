@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bawei.mapper.EmpMapper">
+	<select id="depts" resultType="dept">
+		select * from t_dept
+	</select>
+	<insert id="add" parameterType="employee">
+		insert into t_employee
+		value(null,#{ename},#{password},#{starttime},#{endtime},#{salary},#{d_id});
+	</insert>
+	<select id="reg" parameterType="employee" resultType="employee">
+		select *
+		from t_employee where ename=#{ename}
+	</select>
+	<resultMap type="employee" id="em">
+		<result column="eid" property="eid" />
+		<result column="ename" property="ename" />
+		<result column="password" property="password" />
+		<result column="starttime" property="starttime" />
+		<result column="endtime" property="endtime" />
+		<result column="salary" property="salary" />
+		<association property="dept" javaType="dept">
+			<result column="did" property="did" />
+			<result column="dname" property="dname" />
+		</association>
+	</resultMap>
+
+
+	<select id="getall" parameterType="employee" resultMap="em">
+	select * from t_employee e,t_dept d where e.d_id=d.did 
+	<if test="id!=0">
+	and salary>3800 and d_id = #{id}  order by salary desc
+	</if>
+	
+	</select>
+</mapper>
