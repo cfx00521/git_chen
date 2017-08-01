@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bawei.mapper.DeptMapper">
+	<select id="getdept" resultMap="Em">
+		select * from dept d,emp e where d.did = e.d_id
+	</select>
+	<resultMap type="dept" id="Em">
+		<id column="did" property="did" />
+		<result column="dname" property="dname" />
+		<collection property="emps" ofType="emp">
+			<id column="eid" property="eid" />
+			<result column="ename" property="ename" />
+		</collection>
+	</resultMap>
+	
+</mapper>
