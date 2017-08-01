@@ -22,7 +22,7 @@ public class MyInterceotor implements HandlerInterceptor{
 	public void afterCompletion(HttpServletRequest arg0,
 			HttpServletResponse arg1, Object arg2, Exception arg3)
 			throws Exception {
-
+		System.out.println("!!!!!!!!!!!");
 		System.out.println("------------------1");
 	}
 
